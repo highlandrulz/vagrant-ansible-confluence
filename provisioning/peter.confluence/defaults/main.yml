@@ -1,0 +1,10 @@
+---
+# The confluence role by defaul installs confluence software
+
+confluence_user_home_dir: "/opt"
+confluence_home: "/var/confluence"
+confluence_download_link: "https://www.atlassian.com/software/confluence/downloads/binary"
+confluence_filename: "atlassian-confluence"
+confluence_extracted: "{{ confluence_filename }}" 
+confluence_version: "6.5.0-x64"
+

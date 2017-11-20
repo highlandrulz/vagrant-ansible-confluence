@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<confluence-configuration>
+  <setupStep>complete</setupStep>
+  <setupType>custom</setupType>
+  <buildNumber>7502</buildNumber>
+  <properties>
+    <property name="admin.ui.allow.daily.backup.custom.location">false</property>
+    <property name="admin.ui.allow.manual.backup.download">false</property>
+    <property name="admin.ui.allow.site.support.email">false</property>
+    <property name="atlassian.license.message">AAABJg0ODAoPeNptkFFLwzAUhd/zKwq+6ENG2k6cg4CuLVps1+GmIPgS4+0a6NJykxb3703Xq
+VN8C CQ559zzJWebDrxCWo+FXsDmbDYPZ14Ub9zBvyIxGImqtarRPGp0WXegJXjna8Ae8OJ17iW9qDsxG EiEcNjEwgIf4tRnlE2JdMGJkFb1wC12MF6srUA
+LyEtRGyBuuHWWJBeq5i044aZS26oW+h0nstmRn 56TGZmSoA1s9i0sxQ54VOR58hiltxmpR+kZ0AyZgLjJ2oIWjj/5aBXuTzB9ygJS4FZoZcaO+69yM j41j
+fliFUSUvTyEtGDJHb0sVguyTpbcLZr5bBoG/rVPjkjOn6Xxb+mAvOx2b4BF+WQcGaffgf+ZV h3KShj4+6WfMcCNkjAsAhRq+4zy7wemURsiHoBGd3yxwRr/
+1QIUfm+OVxSdXt7u2LwLa4+78Wt3F q8=X02eq</property>
+    <property name="attachments.dir">${confluenceHome}/attachments</property>
+    <property name="confluence.setup.server.id">BOAI-747N-UZK4-IXMO</property>
+    <property name="confluence.webapp.context.path"></property>
+    <property name="hibernate.c3p0.acquire_increment">1</property>
+    <property name="hibernate.c3p0.idle_test_period">100</property>
+    <property name="hibernate.c3p0.max_size">60</property>
+    <property name="hibernate.c3p0.max_statements">0</property>
+    <property name="hibernate.c3p0.min_size">20</property>
+    <property name="hibernate.c3p0.preferredTestQuery">select 1</property>
+    <property name="hibernate.c3p0.timeout">30</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.isolation">2</property>
+    <property name="hibernate.connection.password">confluence</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/confluence</property>
+    <property name="hibernate.connection.username">confluence</property>
+    <property name="hibernate.database.lower_non_ascii_supported">true</property>
+    <property name="hibernate.dialect">com.atlassian.confluence.impl.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.setup">true</property>
+    <property name="jwt.private.key">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</property>
+lzAZyifnNGM/sP7pwDeRdMzBmGNUK3R49mJRU2R9RlL3qdAkmVrMN2MKRvONDpIPlzEo32zjss6z9lx8RwndDiY0kAwL6e4Ml+SPs5BhzbXlttDfzHibAUExn/86pDPmOWleFIY/B2AG5J9OCNWT81/fg2qepiqagpHws6i2c6QryDPWv8VLP+gelJhuprNfKQ9eviF/C42eTGTdotS9HZ5XUobFJ5qo6hRH5izZNC5daiiNH+PsHzsu9BirnSwMTstKkf
+24tbpR6a1L4KRV1XDBM4ktchtP4MkcCgcEAoE7t6YIzyhN/RW9Tr+2/fAV4J53IhbLcU5OoA/pUxn947bKUqcPlYd5aZBMr9bCCINRHGPuW0MQ0g9Eg3QICc52HNyM6yYvugedgHK+qH90H+fWTwlM+X7AViTtvcWrTMNswl6X39Cc5Fu4P+cBiC8DhaijzWx/HficZolaJ4woJ3Pike12I1Z55Gyp4aG9z8H3aKZ8i7bSpDYty/BnddRXRSbnMcGYgsl2
+zPwN1kKyMjpBvzyBT8Iwh5p/MIh3435KzQzLGVK0Tarh6BnuVTYgMgK7kIB7nffdV6lgoEVKiGcSOReqaKuxDXGrtULWQibxylbdJGg4c5jBPcHt49k/L4laChyGuwvOTjDUwle1J4ek5C</property>
+nwvfsrrAoHBAK09i9koqaT8iwW/EQXSB/yE1+w9yF3artCGTM93/10ANtq7F039GCuWZI+kr878mC1toOmJULCjQWT8onGhiXz07CVOt2iZYo2RANoBCzWW+X9GLCMZkaYpRBCHfwkTy9A    <property name="synchrony.btf">true</property>
+ZHMM2IF698R81eKK87xa0BXURFJV3lIYAI7IfUlZdPubqLXBN/VASAT9TPQcdk1CoJ6gila1wqZcVpGaxUY3NE9saoWU/9k8itrneHS+1nmpWZXGYdQTYZKAVAx0enA==</property>
+    <property name="jwt.public.key">MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAl8wToc7p38eou2cPRcwsE6Uf5ypyHfrpTaBZM1nI9OCNWT81/fg2qepiqagpHw    <property name="webwork.multipart.saveDir">${localHome}/temp</property>
+s6i2c6QryDPWv8VLP+gelJhuprNfKQ9eviF/C42eTGTdotS9HZ5XUobFJ5qo6hRH5izZNC5daiiNH+PsHzsu9BirnSwMTstKkf8IuowmdZcES2Oqkf8vJKauLYjxpROdqoag9uQIpaZitL</confluence-configuration>
+0zBcLhCw0lOncktG2aiYL+wX3aDy0s02YUELIHUNCTOODKQBbNGeOrF5gFI+695sYOTuCOo7bZXGH+fWTwlM+X7AViTtvcWrTMNswl6X39Cc5Fu4P+cBiC8DhaijzWx/HficZolaJ4woJ3
+Pike12I1Z55Gyp4aG9z8H3aKZ8i7bSpDYty/BnddRXRSbnMcGYgsl2+SY4BUbyI5iwB6TdrC4b9SGlpSnkyCaYuISTelsXSHUpIVo1WyxDSDjIeB5+G28lgya+Ag5C/oUn/p5f0u+vDnGX
+ATshJFixIPsyOpPuf2hgaRzxAgMBAAE=</property>
+    <property name="lucene.index.dir">${localHome}/index</property>
+    <property name="synchrony.btf">true</property>
+    <property name="synchrony.encryption.disabled">true</property>
+    <property name="synchrony.proxy.enabled">true</property>
+    <property name="webwork.multipart.saveDir">${localHome}/temp</property>
+  </properties>
+</confluence-configuration>

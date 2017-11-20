@@ -1,0 +1,13 @@
+#install4j response file for Confluence 6.5.0
+#Sun Nov 19 15:31:12 UTC 2017
+launch.application$Boolean=false
+rmiPort$Long=8000
+app.install.service$Boolean=true
+existingInstallationDir=/opt/Confluence
+sys.confirmedUpdateInstallationString=false
+sys.languageId=en
+sys.installationDir=/opt/confluence
+app.confHome=/var/confluence
+executeLauncherAction$Boolean=true
+httpPort$Long=8090
+portChoice=default

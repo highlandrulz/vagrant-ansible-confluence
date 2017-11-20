@@ -1,0 +1,96 @@
+---
+# Add Java dependancy for confluence
+- name: Add Java 8 repository
+  apt_repository: repo='ppa:webupd8team/java'
+- name: Agree to oracle license
+  debconf: name=oracle-java8-installer question=shared/accepted-oracle-license-v1-1 vtype=select value=true
+- name: Install Java 8
+  apt: name=oracle-java8-installer force=yes
+
+# Copy files into place
+- name: Check if confluence binary exists locally
+  local_action: stat path=files/{{ confluence_filename }}-{{ confluence_version }}.bin
+  register: filestatus_local
+- name: Check if confluence binary exists remotely
+  stat: path={{ confluence_user_home_dir }}/{{ confluence_filename }}-{{ confluence_version }}.bin
+  register: filestatus_remote  
+- name: Copy confluence file
+  copy: src=files/{{ confluence_filename }}-{{ confluence_version }}.bin dest={{ confluence_user_home_dir }}/{{ confluence_filename }}-{{ confluence_version }}.bin 
+  when: 
+    - filestatus_local.stat.exists
+    - not filestatus_remote.stat.exists
+- name: Download the Source
+  get_url: url={{ confluence_download_link }}/{{ confluence_filename }}-{{ confluence_version }}.bin dest={{ confluence_user_home_dir }}/{{ confluence_filename }}-{{ confluence_version }}.bin
+  when: 
+    - not filestatus_local.stat.exists
+    - not filestatus_remote.stat.exists
+- name: Make file executable
+  file: 
+    path: "{{ confluence_user_home_dir }}/{{ confluence_filename }}-{{ confluence_version }}.bin"
+    mode: 0755
+- name: Copy response file into place
+  template: src=response.varfile dest={{ confluence_user_home_dir }}
+- name: Copy MySQL driver
+  copy: src=files/mysql-connector-java-5.1.44.tar.gz dest={{ confluence_user_home_dir }}
+
+- stat: path={{ confluence_user_home_dir }}/confluence/bin/start-confluence.sh
+  register: st
+
+# Execute unattended install of confluence
+- name: Unattended install of confluence
+  shell: "{{ confluence_user_home_dir }}/{{ confluence_filename }}-{{ confluence_version }}.bin -q -varfile {{ confluence_user_home_dir }}/response.varfile"
+  when: not st.stat.exists
+
+# Stop MySQL
+- name: Stopping mySQL
+  service: name=mysql state=stopped
+
+# Copy Conflueence MySQL configuration into place
+- name: Copy Confluence MySQL configuration into place
+  template: src=servermy.cnf dest=/etc/mysql/my.cnf
+
+# Start MySQL
+- name: Starting MySQL
+  service: name=mysql state=started
+
+# Setup MySQL for Confluence
+- name: Create Confluence database
+  mysql_db: name=confluence state=present encoding=utf8 collation=utf8_bin
+- name: Create Confluence DB user
+  mysql_user: name="confluence" host=localhost priv='*.*:ALL' password=confluence
+
+# Copy MySQL JDBC driver into place
+- name: Unarchive driver
+  unarchive: src={{ confluence_user_home_dir }}/mysql-connector-java-5.1.44.tar.gz dest={{ confluence_user_home_dir }} copy=no
+- name: Move driver into place
+  copy: remote_src=true src={{ confluence_user_home_dir }}/mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar dest={{ confluence_user_home_dir }}/confluence/lib
+
+# Copy database configuration into place
+#- name: Copy database file into place
+#  template: src=dbconfig.xml dest={{ confluence_home }}
+
+# Start the confluence service
+- name: enable confluence service
+  service: name=confluence enabled=true state=started
+
+# Pause to allow confluence to initialise the database
+#- name: Pause for 3 minutes to allow the database to be created
+#  pause:
+#    minutes: 3
+
+# Stop the confluence service
+#- name: enable confluence service
+#  service: name=confluence enabled=true state=stopped
+
+# Setup the last part of the confluence setup
+#- name: Copy SQL file to host
+#  copy: src=files/confluencesetup.sql dest=/tmp/confluencesetup.sql
+#- name: Import file.sql similar to mysql -u <username> -p <password> < hostname.sql
+#  mysql_db:
+#    state: import
+#    name: all
+#    target: /tmp/confluencesetup.sql
+
+# Start the confluence service
+#- name: enable confluence service
+#  service: name=confluence enabled=true state=started
